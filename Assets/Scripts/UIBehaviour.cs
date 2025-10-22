@@ -7,17 +7,25 @@ public class UIBehaviour : MonoBehaviour
     public Button startButton;
     public Button restartButton;
     public TextMeshProUGUI timerText;
+    public GameObject winPanel;
+    public GameObject failPanel;
 
-    private float elapsedTime;
     private bool gameActive = false; // true when the game is running
     private bool gameComplete = false; // true when the player finishes the puzzle
+    public float levelTimeLimit = 60f; // want a time limit -> if it gets to 0 the player loses
+    private float remainingTime;
 
     // Start is called before the first frame update
     void Start()
     {
-        restartButton.gameObject.SetActive(false); // want the restart button hidden at the beginning
+        restartButton.gameObject.SetActive(false); // want the restart button hidden at the beginning, as well as the win/fail panels
+        winPanel.SetActive(false);
+        failPanel.SetActive(false);
+
         startButton.onClick.AddListener(StartGame);
         restartButton.onClick.AddListener(RestartGame);
+
+        UpdateTimerDisplay(levelTimeLimit); // want to show the full time before the game starts
     }
 
     // Update is called once per frame
@@ -26,19 +34,26 @@ public class UIBehaviour : MonoBehaviour
     {
         if (gameActive && !gameComplete)
         {
-            elapsedTime += Time.deltaTime;
-            UpdateTimerDisplay(elapsedTime);
+            remainingTime -= Time.deltaTime;
+            if (remainingTime <= 0f) { // TODO: the player also fails when a character crashes
+                remainingTime = 0f;
+                FailGame(); 
+            }
+            UpdateTimerDisplay(remainingTime);
         }
     }
-    // Starts counting + hides the start button
+    // Begins the gameplay
     void StartGame()
     {
-        elapsedTime = 0f;
+        remainingTime = levelTimeLimit;
         gameActive = true;
+        gameComplete = false;
+
         startButton.gameObject.SetActive(false); // button is now hidden - we only want to start the lvl once
         restartButton.gameObject.SetActive(true);
-
-        //TODO: trigger the character's movement
+        winPanel.SetActive(false);
+        failPanel.SetActive(false);
+        //TODO: trigger the character's movement - Project Issue   8
     }
     // Converts time to the form minutes:seconds
     void UpdateTimerDisplay(float time)
@@ -53,11 +68,20 @@ public class UIBehaviour : MonoBehaviour
     {
         gameComplete = true;
         gameActive = false;
+        winPanel.SetActive(true);
         Debug.Log("Puzzle completed in" + timerText.text); // also display in the game later
     }
 
+    // Player lost - time ran out or a character crashed
+    void FailGame() {
+        gameComplete = false;
+        gameActive = false;
+        failPanel.SetActive(true);
+        restartButton.gameObject.SetActive(false); //don't want the restart button when the game's over - that's what the retry button is there for
+        Debug.Log("Puzzle failed");
+    }
     // Resets the lvl by reloading the scene
-    void RestartGame()
+    public void RestartGame()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
     }
