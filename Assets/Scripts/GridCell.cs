@@ -5,28 +5,40 @@ using UnityEngine;
 public class GridCell : MonoBehaviour
 {
     private Renderer cellRenderer;
+    private Material cellMaterialInstance;
     private Color originalColor;
+
+    // Public data fields for identification in the path initializer
+    public int gridX = -1;
+    public int gridZ = -1;
 
     void Awake()
     {
-        // Get the Renderer component once when the cell is created
         cellRenderer = GetComponent<Renderer>();
 
-        // Store the initial color (assuming you've applied a base material)
-        // Use .material because want an instance specific to this cell
-        originalColor = cellRenderer.material.color;
+        if (cellRenderer != null)
+        {
+            // Get an instance of the material so changes only affect this cell
+            cellMaterialInstance = cellRenderer.material;
+            originalColor = cellMaterialInstance.color;
+        }
     }
 
     // Public method to change the color
     public void SetColor(Color newColor)
     {
-        // Assign the new color to the material instance
-        cellRenderer.material.color = newColor;
+        if (cellMaterialInstance != null)
+        {
+            cellMaterialInstance.color = newColor;
+        }
     }
 
     // Public method to reset the color
     public void ResetColor()
     {
-        cellRenderer.material.color = originalColor;
+        if (cellMaterialInstance != null)
+        {
+            cellMaterialInstance.color = originalColor;
+        }
     }
 }
