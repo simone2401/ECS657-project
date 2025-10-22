@@ -5,25 +5,25 @@ using System.Linq;
 
 public class AttachCartToPrefabs : EditorWindow
 {
-    public GameObject cartPrefab; // 拖入你的 CartPrefab
-    public string anchorName = "CartAnchor"; // 矿车挂点名称
-    public float padding = 0.1f;   // 矿车围绕人物比包围盒更大的余量
+    public GameObject cartPrefab; // Drag in your CartPrefab
+    public string anchorName = "CartAnchor"; 
+    public float padding = 0.1f;   
 
-    [MenuItem("Tools/批量套矿车到人物Prefabs")]
-    static void OpenWindow() => GetWindow<AttachCartToPrefabs>("批量套矿车");
+    [MenuItem("Tools/Batching tubes onto character Prefabs")]
+    static void OpenWindow() => GetWindow<AttachCartToPrefabs>("Batch tube deployment");
 
     void OnGUI()
     {
-        EditorGUILayout.LabelField("选择 Cart Prefab 并点击开始", EditorStyles.boldLabel);
-        cartPrefab = (GameObject)EditorGUILayout.ObjectField("矿车Prefab", cartPrefab, typeof(GameObject), false);
-        anchorName = EditorGUILayout.TextField("挂点名称", anchorName);
+        EditorGUILayout.LabelField("select Cart Prefab and start", EditorStyles.boldLabel);
+        cartPrefab = (GameObject)EditorGUILayout.ObjectField("tubePrefab", cartPrefab, typeof(GameObject), false);
+        anchorName = EditorGUILayout.TextField("Anchor point name", anchorName);
         padding = EditorGUILayout.FloatField("Padding", padding);
 
-        if (GUILayout.Button("开始批量套用"))
+        if (GUILayout.Button("begin"))
         {
             if (cartPrefab == null)
             {
-                EditorUtility.DisplayDialog("错误", "请先选择 CartPrefab！", "OK");
+                EditorUtility.DisplayDialog("erro", "please select CartPrefab first！", "OK");
                 return;
             }
             AttachToSelectedPrefabs();
@@ -41,10 +41,10 @@ public class AttachCartToPrefabs : EditorWindow
             GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>(path);
             if (prefab == null) continue;
 
-            // 进入 Prefab 编辑模式
+            // edit Prefab 
             GameObject root = PrefabUtility.LoadPrefabContents(path);
 
-            // 查找或创建挂点
+            // find or create Anchor point
             Transform anchor = root.transform.Find(anchorName);
             if (anchor == null)
             {
@@ -53,23 +53,23 @@ public class AttachCartToPrefabs : EditorWindow
                 anchor = anchorGO.transform;
             }
 
-            // 如果 prefab 内部已有旧矿车，先删除
+            // delete if existing old mining carts inside the prefab
             foreach (Transform child in anchor)
                 Object.DestroyImmediate(child.gameObject);
 
-            // 实例化新的Cart
+            // Instantiation
             GameObject cartInstance = (GameObject)PrefabUtility.InstantiatePrefab(cartPrefab, root.transform);
             cartInstance.transform.SetParent(anchor, false);
             cartInstance.transform.localPosition = Vector3.zero;
             cartInstance.transform.localRotation = Quaternion.identity;
 
-            // 保存
+            // save
             PrefabUtility.SaveAsPrefabAsset(root, path);
             PrefabUtility.UnloadPrefabContents(root);
 
             count++;
         }
 
-        EditorUtility.DisplayDialog("完成", $"成功为 {count} 个 Prefab 添加矿车！", "OK");
+        EditorUtility.DisplayDialog("finish", $"add tube to {count} Prefab successfully！", "OK");
     }
 }
