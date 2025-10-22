@@ -35,7 +35,7 @@ public class UIBehaviour : MonoBehaviour
         if (gameActive && !gameComplete)
         {
             remainingTime -= Time.deltaTime;
-            if (remainingTime <= 0f) { // TODO: the player also fails when a character crashes
+            if (remainingTime <= 0f) { // TODO: the player also fails when a character crashes - not for this prototype
                 remainingTime = 0f;
                 FailGame(); 
             }
