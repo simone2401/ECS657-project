@@ -57,7 +57,7 @@ public class CartController : MonoBehaviour
 
         foreach (var dir in directions) {
             Vector3 checkPos = currentRail.position + dir * checkDistance;
-            Collider[] hits = Physics.OverlapSphere(checkPos, 0.3f);
+            Collider[] hits = Physics.OverlapSphere(checkPos, 0.1f);
 
             foreach (var hit in hits) {
                 if (hit.CompareTag("Rail") && hit.transform != currentRail) {
