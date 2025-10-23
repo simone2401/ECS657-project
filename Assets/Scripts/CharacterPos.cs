@@ -5,7 +5,7 @@ public class CartController : MonoBehaviour
     public Transform startPoint;
     public float moveSpeed = 2f;
     public float rotationSpeed = 5f; // for smooth turning
-    public float yOffset = 0.3f;
+    public float yOffset = 1f;
 
     private Transform currentRail;
     private Transform nextRail;
@@ -15,7 +15,7 @@ public class CartController : MonoBehaviour
     void Start()
     {
         if (startPoint == null)
-            startPoint = GameObject.Find("StartPoint").transform;
+            startPoint = GameObject.Find("StartRail").transform;
 
         transform.position = startPoint.position + Vector3.up * yOffset;
 
