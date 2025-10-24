@@ -2280,12 +2280,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6963792197465441760, guid: ffa4f050a8c0f476b91170b2f77749d3, type: 3}
       propertyPath: m_TagString
-      value: Rail
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 8890024350324390260, guid: ffa4f050a8c0f476b91170b2f77749d3, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: e6b9b44320f4448d9d5e0ee634259966, type: 2}
+      objectReference: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8964,21 +8964,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8478051276514639253}
     m_Modifications:
+    - target: {fileID: 35531384535128640, guid: fa43473adb7cd439f896e0bc8d621f85, type: 3}
+      propertyPath: m_TagString
+      value: Rail
+      objectReference: {fileID: 0}
+    - target: {fileID: 449387575149220643, guid: fa43473adb7cd439f896e0bc8d621f85, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: e6b9b44320f4448d9d5e0ee634259966, type: 2}
     - target: {fileID: 1084719327057115939, guid: fa43473adb7cd439f896e0bc8d621f85, type: 3}
       propertyPath: m_VersionIndex
-      value: 1637
+      value: 1643
       objectReference: {fileID: 0}
+    - target: {fileID: 3360029450957458265, guid: fa43473adb7cd439f896e0bc8d621f85, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 4045311368630136429, guid: fa43473adb7cd439f896e0bc8d621f85, type: 3}
       propertyPath: m_Name
       value: SwitchRailGroup_
       objectReference: {fileID: 0}
     - target: {fileID: 4227486311117773673, guid: fa43473adb7cd439f896e0bc8d621f85, type: 3}
       propertyPath: m_VersionIndex
-      value: 1631
+      value: 1637
       objectReference: {fileID: 0}
     - target: {fileID: 5141960873101420967, guid: fa43473adb7cd439f896e0bc8d621f85, type: 3}
       propertyPath: m_VersionIndex
-      value: 1634
+      value: 1640
       objectReference: {fileID: 0}
     - target: {fileID: 5158096301002084224, guid: fa43473adb7cd439f896e0bc8d621f85, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9022,7 +9034,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6166588249977823445, guid: fa43473adb7cd439f896e0bc8d621f85, type: 3}
       propertyPath: m_VersionIndex
-      value: 1628
+      value: 1634
       objectReference: {fileID: 0}
     - target: {fileID: 6693240307633061579, guid: fa43473adb7cd439f896e0bc8d621f85, type: 3}
       propertyPath: 'tiles.Array.data[0]'
@@ -9040,6 +9052,10 @@ PrefabInstance:
       propertyPath: 'tiles.Array.data[3]'
       value: 
       objectReference: {fileID: 782413900053548719}
+    - target: {fileID: 7501640763310311392, guid: fa43473adb7cd439f896e0bc8d621f85, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
