@@ -1,18 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
-public class LevelEvents : MonoBehaviour
+using System;
+public class LevelEvents
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public static Action OnLevelWin;
+    public static Action OnLevelFail;
+    public static void Win() => OnLevelWin?.Invoke();
+    public static void Fail() => OnLevelFail?.Invoke();
+   
 }

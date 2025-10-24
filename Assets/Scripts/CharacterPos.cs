@@ -23,6 +23,8 @@ public class CartController : MonoBehaviour
         nextRail = FindNextRail();
 
         moving = nextRail != null;
+
+        //moving = false; // don't start moving straight away
     }
 
     void Update()
@@ -75,5 +77,12 @@ public class CartController : MonoBehaviour
         }
 
         return null;
+    }
+    public void StartMoving() {
+        moving = true;
+    }
+    public void StopMovement(){
+        moving = nextRail = null;
+        Debug.Log("Cart collided + stopped moving");
     }
 }

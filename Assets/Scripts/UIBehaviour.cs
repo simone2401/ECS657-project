@@ -9,6 +9,7 @@ public class UIBehaviour : MonoBehaviour
     public TextMeshProUGUI timerText;
     public GameObject winPanel;
     public GameObject failPanel;
+    public CartController cartController;
 
     private bool gameActive = false; // true when the game is running
     private bool gameComplete = false; // true when the player finishes the puzzle
@@ -53,7 +54,8 @@ public class UIBehaviour : MonoBehaviour
         restartButton.gameObject.SetActive(true);
         winPanel.SetActive(false);
         failPanel.SetActive(false);
-        //TODO: trigger the character's movement - Project Issue   8
+        // load the lvl scene
+        cartController.StartMoving();
     }
     // Converts time to the form minutes:seconds
     void UpdateTimerDisplay(float time)
@@ -72,7 +74,7 @@ public class UIBehaviour : MonoBehaviour
         Debug.Log("Puzzle completed in" + timerText.text); // also display in the game later
     }
 
-    // Player lost - time ran out or a character crashed
+    // Player lost - time ran out or a character got hit by a spike
     void FailGame() {
         gameComplete = false;
         gameActive = false;
@@ -85,5 +87,16 @@ public class UIBehaviour : MonoBehaviour
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
     }
+    // We want the UI to persist
+    void Awake(){ 
+        DontDestroyOnLoad(gameObject); }
+    private void OnEnable(){ 
+        LevelEvents.OnLevelWin += PuzzleComplete; 
+        LevelEvents.OnLevelFail += FailGame; 
+    } 
+    void OnDisable(){ 
+        LevelEvents.OnLevelWin -= PuzzleComplete; 
+        LevelEvents.OnLevelFail -= FailGame; 
+    } 
 }
 
