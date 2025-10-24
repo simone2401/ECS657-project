@@ -22,9 +22,9 @@ public class CartController : MonoBehaviour
         currentRail = startPoint;
         nextRail = FindNextRail();
 
-        moving = nextRail != null;
+        //moving = nextRail != null;
 
-        //moving = false; // don't start moving straight away
+        moving = false; // don't start moving straight away
     }
 
     void Update()
