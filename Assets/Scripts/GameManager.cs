@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -50,5 +51,11 @@ public class GameManager : MonoBehaviour
     void FailLevel()
     {
         timerText.text = "You Fail";
+    }
+
+    public void RestartLevel()
+    {
+        Scene current = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(current.name);
     }
 }
