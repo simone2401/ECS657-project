@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        UpdateTimerUI();   
+        // UpdateTimerUI();   
     }
 
     void Update()
@@ -24,10 +24,10 @@ public class GameManager : MonoBehaviour
             {
                 timeRemaining = 0;
                 isTiming = false;
-                FailLevel();
+                // FailLevel();
             }
 
-            UpdateTimerUI();
+            // UpdateTimerUI();
         }
     }
 
@@ -41,17 +41,17 @@ public class GameManager : MonoBehaviour
         levelFinished = true;
     }
 
-    void UpdateTimerUI()
-    {
-        int minutes = Mathf.FloorToInt(timeRemaining / 60);
-        int seconds = Mathf.FloorToInt(timeRemaining % 60);
-        timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
-    }
+    // void UpdateTimerUI()
+    // {
+    //     int minutes = Mathf.FloorToInt(timeRemaining / 60);
+    //     int seconds = Mathf.FloorToInt(timeRemaining % 60);
+    //     timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+    // }
 
-    void FailLevel()
-    {
-        timerText.text = "You Fail";
-    }
+    // void FailLevel()
+    // {
+    //     timerText.text = "You Fail";
+    // }
 
     public void RestartLevel()
     {
