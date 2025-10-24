@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
             {
                 timeRemaining = 0;
                 isTiming = false;
-                FailLevel();
+                // FailLevel();
             }
 
             UpdateTimerUI();
@@ -48,10 +48,10 @@ public class GameManager : MonoBehaviour
         timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
-    void FailLevel()
-    {
-        timerText.text = "You Fail";
-    }
+    // void FailLevel()
+    // {
+    //     timerText.text = "You Fail";
+    // }
 
     public void RestartLevel()
     {
