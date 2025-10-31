@@ -1,11 +1,14 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class UIBehaviour : MonoBehaviour
 {
     public Button startButton;
     public Button restartButton;
+    public Button retryButton;
+    public Button returnToMenuButton;
     public TextMeshProUGUI timerText;
     public GameObject winPanel;
     public GameObject failPanel;
@@ -25,6 +28,8 @@ public class UIBehaviour : MonoBehaviour
 
         startButton.onClick.AddListener(StartGame);
         restartButton.onClick.AddListener(RestartGame);
+        retryButton.onClick.AddListener(RestartGame);
+        returnToMenuButton.onClick.AddListener(ReturnToMenu);
 
         UpdateTimerDisplay(levelTimeLimit); // want to show the full time before the game starts
     }
@@ -71,7 +76,9 @@ public class UIBehaviour : MonoBehaviour
         gameComplete = true;
         gameActive = false;
         winPanel.SetActive(true);
-        Debug.Log("Puzzle completed in" + timerText.text); // also display in the game later
+        restartButton.gameObject.SetActive(false);
+        Debug.Log("Puzzle completed in: " + timerText.text); // also display in the game later
+        returnToMenuButton.gameObject.SetActive(true);
     }
 
     // Player lost - time ran out or a character got hit by a spike
@@ -80,6 +87,7 @@ public class UIBehaviour : MonoBehaviour
         gameActive = false;
         failPanel.SetActive(true);
         restartButton.gameObject.SetActive(false); //don't want the restart button when the game's over - that's what the retry button is there for
+        retryButton.gameObject.SetActive(true);
         Debug.Log("Puzzle failed");
     }
     // Resets the lvl by reloading the scene
@@ -87,9 +95,11 @@ public class UIBehaviour : MonoBehaviour
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
     }
-    // We want the UI to persist
-    void Awake(){ 
-        DontDestroyOnLoad(gameObject); }
+
+    // sends you back to the menu
+    public void ReturnToMenu(){
+        SceneManager.LoadScene("MainMenu");
+    }
     private void OnEnable(){ 
         LevelEvents.OnLevelWin += PuzzleComplete; 
         LevelEvents.OnLevelFail += FailGame; 
