@@ -38,12 +38,14 @@ public class CartController : MonoBehaviour
         // rotate to face next rail smoothly
         Vector3 direction = (nextRail.position - transform.position).normalized;
         direction.y = 0;
-        if (direction != Vector3.zero) {
+        if (direction != Vector3.zero)
+        {
             Quaternion targetRot = Quaternion.LookRotation(direction, Vector3.up);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, Time.deltaTime * rotationSpeed);
         }
 
-        if (Vector3.Distance(transform.position, targetPos) < 0.01f) {
+        if (Vector3.Distance(transform.position, targetPos) < 0.01f)
+        {
             transform.position = targetPos; // snap to center
             previousRail = currentRail;
             currentRail = nextRail;
@@ -53,17 +55,22 @@ public class CartController : MonoBehaviour
         }
     }
 
-    private Transform FindNextRail() {
+    private Transform FindNextRail()
+    {
         Vector3[] directions = { Vector3.right, Vector3.left, Vector3.forward, Vector3.back };
         float checkDistance = 1.2f;
 
-        foreach (var dir in directions) {
+        foreach (var dir in directions)
+        {
             Vector3 checkPos = currentRail.position + dir * checkDistance;
             Collider[] hits = Physics.OverlapSphere(checkPos, 0.1f);
 
-            foreach (var hit in hits) {
-                if (hit.CompareTag("Rail") && hit.transform != currentRail) {
-                    if (previousRail != null) {
+            foreach (var hit in hits)
+            {
+                if (hit.CompareTag("Rail") && hit.transform != currentRail)
+                {
+                    if (previousRail != null)
+                    {
                         // ensure cart does not go backwards
                         Vector3 moveDir = (hit.transform.position - currentRail.position).normalized;
                         Vector3 lastDir = (currentRail.position - previousRail.position).normalized;
@@ -78,10 +85,12 @@ public class CartController : MonoBehaviour
 
         return null;
     }
-    public void StartMoving() {
+    public void StartMoving()
+    {
         moving = true;
     }
-    public void StopMovement(){
+    public void StopMovement()
+    {
         moving = nextRail = null;
         Debug.Log("Cart collided + stopped moving");
     }

@@ -40,7 +40,8 @@ public class GridManager : MonoBehaviour
             }
             else
             {
-                Debug.LogError("Duplicate grid coordinates found: " + key);
+                Debug.LogError($"Duplicate grid coordinates found: {key} on {cell.name}", cell);
+                cellDictionary[key] = cell; // Replace instead of error
             }
         }
     }

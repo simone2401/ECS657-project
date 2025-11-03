@@ -8,6 +8,7 @@ public class GridCell : MonoBehaviour
     private Material cellMaterialInstance;
     private Color originalColor;
 
+
     // Public data fields for identification in the path initializer
     public int gridX = -1;
     public int gridZ = -1;
