@@ -8,15 +8,17 @@ public class JunctionController : MonoBehaviour
     public SplineContainer splineContainer;
     public int leftSplineIndex = 0;
     public int rightSplineIndex = 1;
-    // [Tooltip("")]
-    public int junctionKnotIndex = 0;
+    public int leftJunctionKnotIndex = 0;
+    public int rightJunctionKnotIndex = 0;
 
     [Header("Junction Objects")]
     public Transform arrow;
     public Transform lever;
 
+    [Header("Computation Values")]
     private readonly float arrowVerticalOffset = 1f;
-    private readonly float arrowAheadDistance = 0.15f;
+    public float leftArrowAheadDistance = 0.2f;
+    public float rightArrowAheadDistance = 0.2f;
 
     [Header("Direction")]
     public bool pointLeftBranch = true;
@@ -50,9 +52,11 @@ public class JunctionController : MonoBehaviour
     {
         if (splineContainer == null || arrow == null) return;
 
-        int splineIndex = pointLeftBranch ? leftSplineIndex : rightSplineIndex;
+        (int splineIndex, int junctionKnotIndex, float arrowAheadDistance) =
+            pointLeftBranch
+                ? (leftSplineIndex, leftJunctionKnotIndex, leftArrowAheadDistance)
+                : (rightSplineIndex, rightJunctionKnotIndex, rightArrowAheadDistance);
         Spline spline = splineContainer.Splines[splineIndex];
-        BezierKnot knot = spline.Knots.ElementAt(junctionKnotIndex);
 
         float t = spline.ConvertIndexUnit(junctionKnotIndex, PathIndexUnit.Knot, PathIndexUnit.Normalized);
         float tAhead = Mathf.Min(t + arrowAheadDistance, 1f); // get position a little head of junction knot
