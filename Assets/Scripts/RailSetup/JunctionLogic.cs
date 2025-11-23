@@ -9,10 +9,13 @@ public class JunctionController : MonoBehaviour
     [SerializeField] int rightSplineIndex = 1;
     [SerializeField] int leftJunctionKnotIndex = 0;
     [SerializeField] int rightJunctionKnotIndex = 0;
+    [SerializeField] int leftSliceIndex;
+    [SerializeField] int rightSliceIndex;
 
-    [Header("Junction Objects")]
+    [Header("Objects")]
     [SerializeField] Transform arrow;
     [SerializeField] Transform lever;
+    [SerializeField] CartController cartController;
 
     [Header("Computation Values")]
     readonly float arrowVerticalOffset = 1f;
@@ -45,6 +48,9 @@ public class JunctionController : MonoBehaviour
             lever.localRotation *= Quaternion.Euler(0f, 180f, 0f);
         else
             lever.localRotation *= Quaternion.Euler(0f, -180f, 0f);
+        cartController.toggleSlice(leftSliceIndex);
+        cartController.toggleSlice(rightSliceIndex);
+        cartController.RefreshPath();
     }
 
     public void UpdateArrow()

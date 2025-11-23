@@ -35,9 +35,25 @@ public class CartController : MonoBehaviour
             return;
         }
 
-        path = new SplinePath(CalculatePath());
+        RefreshPath();
 
         StartCoroutine(FollowCoroutine());
+    }
+
+    public void RefreshPath()
+    {
+        path = new SplinePath(CalculatePath());
+    }
+
+    public void toggleSlice(int sliceIndex)
+    {
+        if (pathData == null || pathData.slices == null || sliceIndex < 0 || sliceIndex >= pathData.slices.Length)
+        {
+            Debug.LogWarning("Invalid slice index or pathData not initialized.");
+            return;
+        }
+
+        pathData.slices[sliceIndex].isEnabled = !pathData.slices[sliceIndex].isEnabled;
     }
 
     private List<SplineSlice<Spline>> CalculatePath()
