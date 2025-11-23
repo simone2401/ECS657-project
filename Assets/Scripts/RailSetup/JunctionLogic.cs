@@ -8,12 +8,15 @@ public class JunctionController : MonoBehaviour
     public SplineContainer splineContainer;
     public int leftSplineIndex = 0;
     public int rightSplineIndex = 1;
+    // [Tooltip("")]
     public int junctionKnotIndex = 0;
 
-    [Header("Arrow Settings")]
+    [Header("Junction Objects")]
     public Transform arrow;
-    public float arrowVerticalOffset = 1f;
-    public float arrowAheadDistance = 0.15f;
+    public Transform lever;
+
+    private readonly float arrowVerticalOffset = 1f;
+    private readonly float arrowAheadDistance = 0.15f;
 
     [Header("Direction")]
     public bool pointLeftBranch = true;
@@ -21,6 +24,26 @@ public class JunctionController : MonoBehaviour
     void Start()
     {
         UpdateArrow();
+        UpdateLever();
+    }
+
+    // Toggle when lever clicked
+    public void ToggleJunction()
+    {
+        pointLeftBranch = !pointLeftBranch;
+        UpdateArrow();
+        UpdateLever();
+    }
+
+    private void UpdateLever()
+    {
+        if (lever == null) return;
+
+        // flip 180° on Y when switching
+        if (pointLeftBranch)
+            lever.localRotation *= Quaternion.Euler(0f, 180f, 0f);
+        else
+            lever.localRotation *= Quaternion.Euler(0f, -180f, 0f);
     }
 
     public void UpdateArrow()
