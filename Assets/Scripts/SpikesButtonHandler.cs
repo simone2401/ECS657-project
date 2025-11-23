@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class SpikesButtonHandler : MonoBehaviour
 {
-    // ⭐ REMOVED: public CartController characterMovement; 
+    // ⭐ REMOVED: public CharacterPos characterMovement; 
     // This reference is no longer needed since QTEActivatorTrigger handles activation.
 
     // Reference to the SpikeController component. This must be set by the Activator.

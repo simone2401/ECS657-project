@@ -9,7 +9,7 @@ public class TrapDoorTrigger : MonoBehaviour
         // player fails if they fall - when the door is open
         if (other.CompareTag("Character")&& trapDoor.isOpen){
             // stop the character moving
-            CartController cart = other.GetComponent<CartController>();
+            CharacterPos cart = other.GetComponent<CharacterPos>();
             if (cart != null)
             {
             cart.StopMovement();

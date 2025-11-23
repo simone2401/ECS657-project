@@ -12,7 +12,7 @@ public class UIBehaviour : MonoBehaviour
     public TextMeshProUGUI timerText;
     public GameObject winPanel;
     public GameObject failPanel;
-    public CartController cartController;
+    public CharacterPos characterPos;
 
     private bool gameActive = false; // true when the game is running
     private bool gameComplete = false; // true when the player finishes the puzzle
@@ -60,7 +60,7 @@ public class UIBehaviour : MonoBehaviour
         winPanel.SetActive(false);
         failPanel.SetActive(false);
         // load the lvl scene
-        cartController.StartMoving();
+        characterPos.StartMoving();
     }
     // Converts time to the form minutes:seconds
     void UpdateTimerDisplay(float time)

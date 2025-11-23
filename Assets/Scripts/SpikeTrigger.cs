@@ -8,7 +8,7 @@ public class SpikeTrigger : MonoBehaviour
         if (other.CompareTag("Character"))
         {
             // stop the character moving
-            CartController cart = other.GetComponent<CartController>();
+            CharacterPos cart = other.GetComponent<CharacterPos>();
             if (cart != null){
                 cart.StopMovement();
                 Debug.Log("Character got hit by a spike!");

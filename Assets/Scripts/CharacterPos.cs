@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CartController : MonoBehaviour
+public class CharacterPos : MonoBehaviour
 {
     public Transform startPoint;
     public float moveSpeed = 2f;

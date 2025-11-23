@@ -1,27 +1,26 @@
 using UnityEngine;
 using UnityEngine.Splines;
-using System.Linq;
 
 public class JunctionController : MonoBehaviour
 {
     [Header("Spline Settings")]
-    public SplineContainer splineContainer;
-    public int leftSplineIndex = 0;
-    public int rightSplineIndex = 1;
-    public int leftJunctionKnotIndex = 0;
-    public int rightJunctionKnotIndex = 0;
+    [SerializeField] SplineContainer splineContainer;
+    [SerializeField] int leftSplineIndex = 0;
+    [SerializeField] int rightSplineIndex = 1;
+    [SerializeField] int leftJunctionKnotIndex = 0;
+    [SerializeField] int rightJunctionKnotIndex = 0;
 
     [Header("Junction Objects")]
-    public Transform arrow;
-    public Transform lever;
+    [SerializeField] Transform arrow;
+    [SerializeField] Transform lever;
 
     [Header("Computation Values")]
-    private readonly float arrowVerticalOffset = 1f;
-    public float leftArrowAheadDistance = 0.2f;
-    public float rightArrowAheadDistance = 0.2f;
+    readonly float arrowVerticalOffset = 1f;
+    [SerializeField] float leftArrowAheadDistance = 0.2f;
+    [SerializeField] float rightArrowAheadDistance = 0.2f;
 
     [Header("Direction")]
-    public bool pointLeftBranch = true;
+    [SerializeField] bool pointLeftBranch = true;
 
     void Start()
     {
