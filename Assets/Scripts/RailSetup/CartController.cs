@@ -36,6 +36,7 @@ public class CartController : MonoBehaviour
             return;
         }
 
+        AutoGenerateSlices();
         RefreshPath();
 
         StartCoroutine(FollowCoroutine());
@@ -56,6 +57,40 @@ public class CartController : MonoBehaviour
         }
 
         pathData.slices[sliceIndex].isEnabled = !pathData.slices[sliceIndex].isEnabled;
+    }
+
+    private void AutoGenerateSlices()
+    {
+        // if already set in inspector, do nothing
+        if (pathData != null && pathData.slices != null && pathData.slices.Length > 0)
+            return;
+
+        int splineCount = splineContainer.Splines.Count;
+
+        pathData = new SplinePathData();
+        pathData.slices = new SliceData[splineCount];
+
+        for (int i = 0; i < splineCount; i++)
+        {
+            var spline = splineContainer.Splines[i];
+            int knotCount = spline.Knots.Count();
+
+            pathData.slices[i] = new SliceData
+            {
+                splineIndex = i,
+                range = new SplineRange(0, knotCount),
+                isEnabled = true
+            };
+        }
+
+        var sb = new System.Text.StringBuilder();
+        sb.AppendLine($"Auto-generated {splineCount} slices:");
+        for (int i = 0; i < pathData.slices.Length; i++)
+        {
+            var s = pathData.slices[i];
+            sb.AppendLine($"[{i}] splineIndex={s.splineIndex}, range={s.range}, isEnabled={s.isEnabled}");
+        }
+        Debug.Log(sb.ToString());
     }
 
     private List<SplineSlice<Spline>> CalculatePath()
