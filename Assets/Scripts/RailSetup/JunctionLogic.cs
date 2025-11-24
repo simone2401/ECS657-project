@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Splines;
 
@@ -14,9 +15,8 @@ public class JunctionController : MonoBehaviour
     [SerializeField] CartController cartController;
 
     [Header("Computation Values")]
-    readonly float arrowVerticalOffset = 1f;
-    [SerializeField] float leftArrowAheadDistance = 0.2f;
-    [SerializeField] float rightArrowAheadDistance = 0.2f;
+    [SerializeField] float leftAddedRotation = 0f;
+    [SerializeField] float rightAddedRotation = 0f;
 
     [Header("Direction")]
     [SerializeField] bool pointLeftBranch = true;
@@ -57,20 +57,12 @@ public class JunctionController : MonoBehaviour
         if (splineContainer == null || arrow == null) return;
 
         int splineIndex = pointLeftBranch ? leftSplineIndex : rightSplineIndex;
-        float arrowAheadDistance = pointLeftBranch ? leftArrowAheadDistance : rightArrowAheadDistance;
+        float addedRotation = pointLeftBranch ? leftAddedRotation : rightAddedRotation;
         Spline spline = splineContainer.Splines[splineIndex];
 
-        float t = spline.ConvertIndexUnit(0, PathIndexUnit.Knot, PathIndexUnit.Normalized);
-        float tAhead = Mathf.Min(t + arrowAheadDistance, 1f); // get position a little head of junction knot
-        Vector3 pointAhead = splineContainer.transform.TransformPoint(spline.EvaluatePosition(tAhead));
-
-        // Tangent along spline
-        Vector3 tangentWorld = splineContainer.transform.TransformDirection(spline.EvaluateTangent(tAhead)).normalized;
-        // Compute perpendicular angle in horizontal plane (Y-axis) 
-        float angleY = Mathf.Atan2(tangentWorld.x, tangentWorld.z) * Mathf.Rad2Deg;
-
-        arrow.position = pointAhead + Vector3.up * arrowVerticalOffset;
-        // Set rotation: X = 90 to point down, Y = perpendicular to spline
-        arrow.rotation = Quaternion.Euler(90f, angleY, 0f);
+        // Tangent along spline a little ahead (0.2f) of junction
+        Vector3 tangentWorld = splineContainer.transform.TransformDirection(spline.EvaluateTangent(0.2f)).normalized;
+        float angleY = (Mathf.Atan2(tangentWorld.x, tangentWorld.z) * Mathf.Rad2Deg) + addedRotation;
+        arrow.rotation = Quaternion.Euler(0f, angleY, 0f);
     }
 }
