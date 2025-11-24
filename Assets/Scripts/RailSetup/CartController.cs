@@ -25,7 +25,8 @@ public class CartController : MonoBehaviour
     [SerializeField] SplinePathData pathData;
 
     SplinePath path;
-    float progressRatio = 0f; // progress of travel along path
+    float distanceTraveled = 0f;
+    float pathLength = 0f;
 
     void Start()
     {
@@ -43,6 +44,7 @@ public class CartController : MonoBehaviour
     public void RefreshPath()
     {
         path = new SplinePath(CalculatePath());
+        pathLength = path.GetLength();
     }
 
     public void toggleSlice(int sliceIndex)
@@ -74,23 +76,23 @@ public class CartController : MonoBehaviour
 
     IEnumerator FollowCoroutine()
     {
-        for (var n = 0; ; ++n)
+        while (true)
         {
-            progressRatio = 0f;
+            distanceTraveled += speed * Time.deltaTime;
 
-            while (progressRatio < 1f)
-            {
-                // Get position on pat
-                var pos = path.EvaluatePosition(progressRatio);
-                var dir = path.EvaluateTangent(progressRatio);
+            // loop or stop
+            if (distanceTraveled > pathLength)
+                distanceTraveled = 0f;
 
-                transform.position = pos;
-                transform.LookAt(pos + dir);
+            float t = distanceTraveled / pathLength;
 
-                progressRatio += speed * Time.deltaTime;
+            var pos = path.EvaluatePosition(t);
+            var dir = path.EvaluateTangent(t);
 
-                yield return null;
-            }
+            transform.position = pos;
+            transform.LookAt(pos + dir);
+
+            yield return null;
         }
     }
 }
