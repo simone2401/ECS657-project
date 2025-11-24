@@ -98,19 +98,58 @@ public class CartController : MonoBehaviour
 
     private List<SplineSlice<Spline>> CalculatePath()
     {
-        var localToWorldMatrix = splineContainer.transform.localToWorldMatrix;
-        var enabledSlices = pathData.slices.Where(slice => slice.isEnabled).ToList();
         var slices = new List<SplineSlice<Spline>>();
 
-        foreach (var sliceData in enabledSlices)
+        // pick the first enabled spline as entry
+        var startSlice = pathData.slices.First(s => s.isEnabled);
+        int currentIndex = startSlice.splineIndex;
+        slices.Add(CreateSlice(currentIndex));
+
+        while (true)
         {
-            var spline = splineContainer.Splines[sliceData.splineIndex];
-            var slice = new SplineSlice<Spline>(spline, sliceData.range, localToWorldMatrix);
-            slices.Add(slice);
+            int nextIndex = FindConnectedEnabledSpline(currentIndex);
+
+            if (nextIndex == -1)
+                break;
+
+            slices.Add(CreateSlice(nextIndex));
+            currentIndex = nextIndex;
         }
 
         return slices;
     }
+
+    private SplineSlice<Spline> CreateSlice(int splineIndex)
+    {
+        var spline = splineContainer.Splines[splineIndex];
+        return new SplineSlice<Spline>(spline, pathData.slices[splineIndex].range,
+            splineContainer.transform.localToWorldMatrix);
+    }
+
+    private int FindConnectedEnabledSpline(int currentIndex)
+    {
+        var currentSpline = splineContainer.Splines[currentIndex];
+        Vector3 endPos = splineContainer.transform.TransformPoint(
+            currentSpline.EvaluatePosition(1f));
+
+        for (int i = 0; i < pathData.slices.Length; i++)
+        {
+            // skip disabled slices and self
+            if (!pathData.slices[i].isEnabled || i == currentIndex)
+                continue;
+
+            var spline = splineContainer.Splines[i];
+            Vector3 startPos = splineContainer.transform.TransformPoint(
+                spline.EvaluatePosition(0f));
+
+            // exact match because knots are linked
+            if (endPos == startPos)
+                return i;
+        }
+
+        return -1;
+    }
+
 
     IEnumerator FollowCoroutine()
     {
