@@ -99,21 +99,19 @@ public class CartController : MonoBehaviour
     private List<SplineSlice<Spline>> CalculatePath()
     {
         var slices = new List<SplineSlice<Spline>>();
+        var visited = new HashSet<int>(); // track visited splines to prevent loops
 
         // pick the first enabled spline as entry
         var startSlice = pathData.slices.First(s => s.isEnabled);
         int currentIndex = startSlice.splineIndex;
-        slices.Add(CreateSlice(currentIndex));
 
-        while (true)
+        while (currentIndex != -1 && !visited.Contains(currentIndex))
         {
-            int nextIndex = FindConnectedEnabledSpline(currentIndex);
+            visited.Add(currentIndex);
+            slices.Add(CreateSlice(currentIndex));
 
-            if (nextIndex == -1)
-                break;
-
-            slices.Add(CreateSlice(nextIndex));
-            currentIndex = nextIndex;
+            // find next connected enabled spline
+            currentIndex = FindConnectedEnabledSpline(currentIndex);
         }
 
         return slices;
