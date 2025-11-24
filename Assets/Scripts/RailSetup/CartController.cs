@@ -28,6 +28,12 @@ public class CartController : MonoBehaviour
     float distanceTraveled = 0f;
     float pathLength = 0f;
 
+    void Awake()
+    {
+        AutoGenerateSlices();
+        RefreshPath();
+    }
+
     void Start()
     {
         if (splineContainer == null || splineContainer.Splines.Count == 0)
@@ -35,9 +41,6 @@ public class CartController : MonoBehaviour
             Debug.LogError("SplineContainer is not assigned or has no splines.");
             return;
         }
-
-        AutoGenerateSlices();
-        RefreshPath();
 
         StartCoroutine(FollowCoroutine());
     }
