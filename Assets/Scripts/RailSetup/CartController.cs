@@ -21,7 +21,8 @@ public class SliceData
 public class CartController : MonoBehaviour
 {
     [SerializeField] SplineContainer splineContainer;
-    [SerializeField] float speed = 0.8f;
+    [SerializeField] float speed = 5f;
+    [SerializeField] int startSlice = 0;
     [SerializeField] SplinePathData pathData;
 
     SplinePath path;
@@ -101,9 +102,7 @@ public class CartController : MonoBehaviour
         var slices = new List<SplineSlice<Spline>>();
         var visited = new HashSet<int>(); // track visited splines to prevent loops
 
-        // pick the first enabled spline as entry
-        var startSlice = pathData.slices.First(s => s.isEnabled);
-        int currentIndex = startSlice.splineIndex;
+        int currentIndex = startSlice;
 
         while (currentIndex != -1 && !visited.Contains(currentIndex))
         {
