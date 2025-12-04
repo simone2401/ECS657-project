@@ -12,12 +12,18 @@ EditorBuildSettings:
     path: Assets/Scenes/Sabrina.unity
     guid: d2638f2a4937b44798499bd5f2419a19
   - enabled: 1
+    path: Assets/Scenes/TimerUI.unity
+    guid: 05d15d61785a24a33bb28bae0bd5e00f
+  - enabled: 1
+    path: Assets/Scenes/Playground.unity
+    guid: 07125365bb106404486587b32ad89510
+  - enabled: 0
     path: Assets/Scenes/MainMenu.unity
     guid: db23736c55a8d8d4b840c1ead9384ea8
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/UI-fail.unity
     guid: 0786b703e678ab74a9f76aa9f14f8a33
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/PuzzleLevel.unity
     guid: 252746270b0b64db78ba9c23cf228d5b
   m_configObjects: {}

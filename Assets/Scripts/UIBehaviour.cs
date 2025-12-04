@@ -60,7 +60,7 @@ public class UIBehaviour : MonoBehaviour
         winPanel.SetActive(false);
         failPanel.SetActive(false);
         // load the lvl scene
-        characterPos.StartMoving();
+        //characterPos.StartMoving();
     }
     // Converts time to the form minutes:seconds
     void UpdateTimerDisplay(float time)

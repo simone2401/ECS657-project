@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class LeverClick : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class LeverClick : MonoBehaviour
 
     void OnMouseDown()
     {
-        junction?.ToggleJunction();
+        //if (GameManagerPlayground.Instance != null && !(GameManagerPlayground.Instance.GameStarted))
+        //{
+            junction?.ToggleJunction();
+        //}
     }
 }
