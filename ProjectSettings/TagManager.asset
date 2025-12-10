@@ -8,6 +8,7 @@ TagManager:
   - Character
   - SpikeTrap
   - TrapDoorHole
+  - Wizard
   layers:
   - Default
   - TransparentFX

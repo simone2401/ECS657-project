@@ -12,9 +12,9 @@ public class LeverClick : MonoBehaviour
 
     void OnMouseDown()
     {
-        //if (GameManagerPlayground.Instance != null && !(GameManagerPlayground.Instance.GameStarted))
-        //{
+        if (GameManagerPlayground.Instance != null && !(GameManagerPlayground.Instance.GameStarted))
+        {
             junction?.ToggleJunction();
-        //}
+        }
     }
 }

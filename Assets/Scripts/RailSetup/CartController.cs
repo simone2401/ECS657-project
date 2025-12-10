@@ -169,4 +169,11 @@ public class CartController : MonoBehaviour
             yield return null;
         }
     }
+
+    public void StopMovement()
+    {
+        // Stop the coroutine that drives the cart
+        StopAllCoroutines();
+        Debug.Log("Cart movement stopped by SpikeTrigger.");
+    }
 }

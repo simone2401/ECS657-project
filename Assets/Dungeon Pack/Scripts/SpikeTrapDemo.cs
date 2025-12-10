@@ -14,7 +14,7 @@ public class SpikeTrapDemo : MonoBehaviour {
         spikeTrapAnim = GetComponent<Animator>();
 
         // Play the open animation once to ensure spikes start UP
-        spikeTrapAnim.SetTrigger("open");
+        //spikeTrapAnim.SetTrigger("open");
 
         // Immediately stop the automatic cycling Coroutine
         // Stop all coroutines on this script just in case
@@ -32,7 +32,7 @@ public class SpikeTrapDemo : MonoBehaviour {
 
             // Update the state so the spikes won't trigger again
             spikesAreUp = false;
-            Debug.Log("Spikes are now DOWN (Button Clicked).");
+            Debug.Log("Spikes are now DOWN");
         }
     }
 
