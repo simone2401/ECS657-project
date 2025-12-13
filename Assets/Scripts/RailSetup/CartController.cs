@@ -29,6 +29,8 @@ public class CartController : MonoBehaviour
     float distanceTraveled = 0f;
     float pathLength = 0f;
 
+    private bool isMoving = false;
+
     void Awake()
     {
         AutoGenerateSlices();
@@ -43,7 +45,23 @@ public class CartController : MonoBehaviour
             return;
         }
 
-        StartCoroutine(FollowCoroutine());
+        //StartCoroutine(FollowCoroutine());
+    }
+
+    public void StartMoving()
+    {
+        // Only start if we aren't already moving
+        if (!isMoving && pathLength > 0)
+        {
+            isMoving = true;
+            StartCoroutine(FollowCoroutine());
+            Debug.Log(gameObject.name + " started moving.");
+        }
+    }
+
+    public bool IsMoving()
+    {
+        return isMoving;
     }
 
     public void RefreshPath()
@@ -150,7 +168,7 @@ public class CartController : MonoBehaviour
 
     IEnumerator FollowCoroutine()
     {
-        while (true)
+        while (isMoving)
         {
             distanceTraveled += speed * Time.deltaTime;
 
@@ -172,6 +190,7 @@ public class CartController : MonoBehaviour
 
     public void StopMovement()
     {
+        isMoving = false;
         // Stop the coroutine that drives the cart
         StopAllCoroutines();
         Debug.Log("Cart movement stopped by SpikeTrigger.");

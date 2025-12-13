@@ -23,8 +23,20 @@ public class GameManagerPlayground : MonoBehaviour
     // Public function called by the Start Button
     public void StartGame()
     {
+        if (GameStarted) return; // Prevent multiple calls
+
         GameStarted = true;
-        Debug.Log("Game has started! Levers are now active.");
-        // You would typically hide your start button/menu here
+        Debug.Log("Game has started! Levers and Carts are now active.");
+
+        // *** NEW CODE TO START ALL CARTS ***
+
+        // Use FindObjectsByType for better performance and to avoid the deprecated warning
+        CartController[] carts = Object.FindObjectsByType<CartController>(FindObjectsSortMode.None);
+
+        foreach (CartController cart in carts)
+        {
+            // Call the StartMoving function you just added to CartController
+            cart.StartMoving();
+        }
     }
 }
