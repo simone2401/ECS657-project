@@ -42,6 +42,19 @@ public class SpikeTrapDemo : MonoBehaviour {
         return spikesAreUp;
     }
 
+    // Inside SpikeTrapDemo.cs
+
+    public void ResetTrap()
+    {
+        // 1. Reset the logic state
+        spikesAreUp = true;
+
+        // 2. Play the 'open' animation to visually bring them back up
+        spikeTrapAnim.SetTrigger("open");
+
+        Debug.Log(gameObject.name + " reset to UP state.");
+    }
+
     /*
     //This script goes on the SpikeTrap prefab;
 

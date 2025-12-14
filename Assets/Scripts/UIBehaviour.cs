@@ -93,7 +93,45 @@ public class UIBehaviour : MonoBehaviour
     // Resets the lvl by reloading the scene
     public void RestartGame()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+        // 1. Stop the game logic
+        gameActive = false;
+        gameComplete = false;
+
+        // 2. Reset the timer
+        remainingTime = levelTimeLimit;
+        UpdateTimerDisplay(remainingTime);
+
+        if (GameManagerPlayground.Instance != null)
+        {
+            GameManagerPlayground.Instance.ResetManager();
+        }
+
+        // 3. Reset all carts to their starting position
+        // We find all CartControllers and tell them to go back to the start and stop moving
+        CartController[] carts = Object.FindObjectsByType<CartController>(FindObjectsSortMode.None);
+        foreach (CartController cart in carts)
+        {
+            cart.StopMovement();
+            // This resets the distanceTraveled variable we added to your CartController
+            cart.ResetCart();
+        }
+
+        SpikeTrapDemo[] traps = Object.FindObjectsByType<SpikeTrapDemo>(FindObjectsSortMode.None);
+        foreach (SpikeTrapDemo trap in traps)
+        {
+            trap.ResetTrap();
+        }
+
+        // 4. Update UI visibility
+        winPanel.SetActive(false);
+        failPanel.SetActive(false);
+        retryButton.gameObject.SetActive(false);
+        restartButton.gameObject.SetActive(false);
+
+        // Show the start button so the player can begin the new attempt
+        startButton.gameObject.SetActive(true);
+
+        Debug.Log("Level reset manually. Lever positions preserved.");
     }
 
     // sends you back to the menu
@@ -106,7 +144,7 @@ public class UIBehaviour : MonoBehaviour
     } 
     void OnDisable(){ 
         LevelEvents.OnLevelWin -= PuzzleComplete; 
-        LevelEvents.OnLevelFail -= FailGame; 
-    } 
-}
+        LevelEvents.OnLevelFail -= FailGame;
+    }
 
+}

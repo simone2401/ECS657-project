@@ -195,4 +195,32 @@ public class CartController : MonoBehaviour
         StopAllCoroutines();
         Debug.Log("Cart movement stopped by SpikeTrigger.");
     }
+
+    private void UpdatePosition(float t)
+    {
+        if (path == null) return;
+
+        Vector3 pos = path.EvaluatePosition(t);
+        Vector3 dir = path.EvaluateTangent(t);
+
+        transform.position = pos;
+        // Explicitly cast or use Vector3 comparison to fix the CS0034 error
+        if ((UnityEngine.Vector3)dir != UnityEngine.Vector3.zero)
+        {
+            transform.LookAt(pos + (UnityEngine.Vector3)dir);
+        }
+    }
+
+    public void ResetCart()
+    {
+        isMoving = false;
+        distanceTraveled = 0f;
+
+        // Recalculate path based on CURRENT lever positions
+        RefreshPath();
+
+        // Snap the visual model back to the start of the spline
+        UpdatePosition(0f);
+        Debug.Log(gameObject.name + " reset to start. Path refreshed.");
+    }
 }

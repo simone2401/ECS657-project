@@ -39,4 +39,9 @@ public class GameManagerPlayground : MonoBehaviour
             cart.StartMoving();
         }
     }
+
+    public void ResetManager()
+    {
+        GameStarted = false; // This allows the levers to be clicked again
+    }
 }
