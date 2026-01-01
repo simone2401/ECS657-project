@@ -591,10 +591,14 @@ PrefabInstance:
     - target: {fileID: 6072048129560071236, guid: 488543367cef4494287021a4d5e53932, type: 3}
       propertyPath: cartController
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 151640057}
     - target: {fileID: 6072048129560071236, guid: 488543367cef4494287021a4d5e53932, type: 3}
       propertyPath: leftSplineIndex
-      value: 4
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6072048129560071236, guid: 488543367cef4494287021a4d5e53932, type: 3}
+      propertyPath: pointLeftBranch
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6072048129560071236, guid: 488543367cef4494287021a4d5e53932, type: 3}
       propertyPath: splineContainer
@@ -602,7 +606,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6072048129560071236, guid: 488543367cef4494287021a4d5e53932, type: 3}
       propertyPath: rightSplineIndex
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6072048129560071236, guid: 488543367cef4494287021a4d5e53932, type: 3}
       propertyPath: leftAddedRotation
@@ -1370,7 +1374,13 @@ MonoBehaviour:
   speed: 5
   startSlice: 0
   pathData:
-    slices: []
+    slices:
+    - splineIndex: 0
+      range:
+        m_Start: 0
+        m_Count: 0
+        m_Direction: 0
+      isEnabled: 0
 --- !u!1 &1336764764
 GameObject:
   m_ObjectHideFlags: 0
