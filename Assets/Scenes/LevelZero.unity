@@ -603,7 +603,7 @@ PrefabInstance:
     - target: {fileID: 6072048129560071236, guid: 488543367cef4494287021a4d5e53932, type: 3}
       propertyPath: splineContainer
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 687452412}
     - target: {fileID: 6072048129560071236, guid: 488543367cef4494287021a4d5e53932, type: 3}
       propertyPath: rightSplineIndex
       value: 4
