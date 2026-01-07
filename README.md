@@ -10,5 +10,7 @@ Good Luck!
 Play our game here: https://simone2401.github.io/ECS657-project/build/index.html
 <br/>
 External Assets used:<br/>
-https://assetstore.unity.com/packages/3d/characters/easy-primitive-people-161846 - for the pig prefab <br/>
-https://assetstore.unity.com/packages/3d/environments/dungeons/dungeon-low-poly-toon-battle-arena-tower-defense-pack-109791 - for the spike trap (prefab and animaton) and the trap door(prefab)
+https://assetstore.unity.com/packages/3d/characters/easy-primitive-people-161846 - for the pig/witch/knight/angle prefabs <br/>
+https://assetstore.unity.com/packages/3d/environments/dungeons/dungeon-low-poly-toon-battle-arena-tower-defense-pack-109791 - for the spike trap (prefab and animaton) and the trap door(prefab)<br/>
+https://opengameart.org/content/woodland-fantasy - Music: "Woodland Fantasy" by Matthew Pablo, Licensed under CC-BY 3.0<br/>
+https://assetstore.unity.com/packages/3d/vegetation/trees/low-poly-trees-pack-lite-free-stylized-nature-environment-assets-295464?utm_source=chatgpt.com - for tree and stone prefabs
