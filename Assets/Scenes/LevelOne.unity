@@ -510,7 +510,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 9ee0b31c151b68645a4f3f9ca910199c, type: 3}
       propertyPath: m_Name
-      value: rock_005
+      value: rock
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1001,7 +1001,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5933028572992582681, guid: d3c22f15c09d557428dfa0ccb6ae8f35, type: 3}
       propertyPath: m_Name
-      value: bush_02 (1)
+      value: bush_03
       objectReference: {fileID: 0}
     - target: {fileID: 6421441071783833251, guid: d3c22f15c09d557428dfa0ccb6ae8f35, type: 3}
       propertyPath: m_LocalScale.x
@@ -3262,7 +3262,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e5ca7b90243e4c449b8b46532f6a13ba, type: 3}
       propertyPath: m_Name
-      value: pine_tree_1 (1)
+      value: pine_tree_2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3653,6 +3653,7 @@ SceneRoots:
   - {fileID: 1654917935}
   - {fileID: 1247828332}
   - {fileID: 1787483264}
+  - {fileID: 1033283345}
   - {fileID: 832118721}
   - {fileID: 1141177759}
   - {fileID: 1358717786}
@@ -3667,7 +3668,6 @@ SceneRoots:
   - {fileID: 1052904962}
   - {fileID: 1488602005}
   - {fileID: 463006778}
-  - {fileID: 1033283345}
   - {fileID: 447225831}
   - {fileID: 420919105}
   - {fileID: 1021881257}
