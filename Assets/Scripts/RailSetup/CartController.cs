@@ -18,7 +18,7 @@ public class SliceData
     public bool isEnabled;
 }
 
-public class CartController : MonoBehaviour
+public class CartController : MonoBehaviour, IStoppable
 {
     [SerializeField] SplineContainer splineContainer;
     [SerializeField] float speed = 5f;
