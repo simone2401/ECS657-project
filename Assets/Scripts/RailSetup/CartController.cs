@@ -18,7 +18,7 @@ public class SliceData
     public bool isEnabled;
 }
 
-public class CartController : MonoBehaviour
+public class CartController : MonoBehaviour, IStoppable
 {
     [SerializeField] SplineContainer splineContainer;
     [SerializeField] float speed = 5f;
@@ -48,7 +48,7 @@ public class CartController : MonoBehaviour
         //StartCoroutine(FollowCoroutine());
     }
 
-    public void StartMoving()
+    public void StartMovement()
     {
         // Only start if we aren't already moving
         if (!isMoving && pathLength > 0)

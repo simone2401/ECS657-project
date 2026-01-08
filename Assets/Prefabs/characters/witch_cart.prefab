@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1122014388497675158
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8075153603302791084}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8075153603302791084
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1122014388497675158}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.023, y: 1.667, z: 1.31}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1168313350183063820}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1710268003959928551
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18,15 +49,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6383968542a2641e8be3dfd96c4bffce, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -23.867619
+      value: 6.94
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6383968542a2641e8be3dfd96c4bffce, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.02
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6383968542a2641e8be3dfd96c4bffce, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 15.87
+      value: -33.67
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6383968542a2641e8be3dfd96c4bffce, type: 3}
       propertyPath: m_LocalRotation.w
@@ -66,10 +97,19 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6383968542a2641e8be3dfd96c4bffce, type: 3}
       insertIndex: 0
       addedObject: {fileID: 3027514080123016582}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6383968542a2641e8be3dfd96c4bffce, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8075153603302791084}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6383968542a2641e8be3dfd96c4bffce, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6560317811171543802}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6383968542a2641e8be3dfd96c4bffce, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4792352871020322713}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6383968542a2641e8be3dfd96c4bffce, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4463580424585070482}
   m_SourcePrefab: {fileID: 100100000, guid: 6383968542a2641e8be3dfd96c4bffce, type: 3}
 --- !u!4 &1168313350183063820 stripped
 Transform:
@@ -98,6 +138,44 @@ MonoBehaviour:
   startSlice: 0
   pathData:
     slices: []
+--- !u!65 &4792352871020322713
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1980878369590496182}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.2000237, y: 1.1381965, z: 2.7}
+  m_Center: {x: 0, y: 0.72859764, z: 0}
+--- !u!114 &4463580424585070482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1980878369590496182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8f9504f7cb5b4f32b9cca350e071d7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireballPrefab: {fileID: 7196540291030016810, guid: 8d8160c84bd544d0e9c23d46ba7db358, type: 3}
+  firePoint: {fileID: 8075153603302791084}
+  fireballSpeed: 12
+  fireRate: 1
+  detectionRange: 5
 --- !u!1001 &2420055514818284295
 PrefabInstance:
   m_ObjectHideFlags: 0

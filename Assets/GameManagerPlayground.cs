@@ -35,8 +35,8 @@ public class GameManagerPlayground : MonoBehaviour
 
         foreach (CartController cart in carts)
         {
-            // Call the StartMoving function you just added to CartController
-            cart.StartMoving();
+            // Call the StartMovement function you just added to CartController
+            cart.StartMovement();
         }
     }
 
