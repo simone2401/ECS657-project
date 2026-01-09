@@ -20,27 +20,6 @@ public class TreeObstacle : MonoBehaviour
 
     public bool IsBurned => isBurned;
 
-    void OnTriggerEnter(Collider other)
-    {
-        if (isBurned) return;
-
-        if (other.TryGetComponent<IStoppable>(out var stoppable))
-        {
-            stoppable.StopMovement();
-            // Track stopped movers by attaching them to this tree if needed (optional)
-        }
-    }
-
-    void OnCollisionEnter(Collision collision)
-    {
-        if (isBurned) return;
-
-        if (collision.collider.TryGetComponent<IStoppable>(out var stoppable))
-        {
-            stoppable.StopMovement();
-        }
-    }
-
     public void BurnDown()
     {
         if (isBurned) return;
