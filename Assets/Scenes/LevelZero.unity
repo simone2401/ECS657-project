@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571363, b: 0.30692217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028292, g: 0.22571306, b: 0.30692118, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2239,6 +2239,7 @@ GameObject:
   m_Component:
   - component: {fileID: 731695090}
   - component: {fileID: 731695089}
+  - component: {fileID: 731695091}
   m_Layer: 0
   m_Name: SoundManager
   m_TagString: Untagged
@@ -2357,6 +2358,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &731695091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 731695088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6d29a7f0ff46489d8c102a831ec5025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeSlider: {fileID: 667739680}
+  vsyncToggle: {fileID: 1573940555}
+  musicSource: {fileID: 731695089}
 --- !u!1001 &812029533
 PrefabInstance:
   m_ObjectHideFlags: 0
