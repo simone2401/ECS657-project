@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028292, g: 0.22571306, b: 0.30692118, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571363, b: 0.30692217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -617,10 +617,22 @@ PrefabInstance:
     - target: {fileID: 2465101470130400670, guid: 4c58f6e8fe6587a418f103671b86d1ef, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 11500000, guid: 992da3e3a50154d3199fee9871fbcfb4, type: 3}
+      objectReference: {fileID: 620631827}
     - target: {fileID: 2465101470130400670, guid: 4c58f6e8fe6587a418f103671b86d1ef, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2465101470130400670, guid: 4c58f6e8fe6587a418f103671b86d1ef, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnNextLevelClicked
+      objectReference: {fileID: 0}
+    - target: {fileID: 2465101470130400670, guid: 4c58f6e8fe6587a418f103671b86d1ef, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Level2Next, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2465101470130400670, guid: 4c58f6e8fe6587a418f103671b86d1ef, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 3839060069748872313, guid: 4c58f6e8fe6587a418f103671b86d1ef, type: 3}
       propertyPath: m_IsActive
@@ -1157,7 +1169,7 @@ PrefabInstance:
     - target: {fileID: 4716690165911216519, guid: 75080f88b6ec2424583f10426a851ee8, type: 3}
       propertyPath: returnToMenuButton
       value: 
-      objectReference: {fileID: 1763907869}
+      objectReference: {fileID: 0}
     - target: {fileID: 8433469442913724614, guid: 75080f88b6ec2424583f10426a851ee8, type: 3}
       propertyPath: m_Name
       value: UIManager
@@ -4012,17 +4024,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1.3265216, z: 1.0000001}
   m_Center: {x: 0, y: 0.6632608, z: 0}
---- !u!114 &1763907869 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2465101470130400670, guid: 4c58f6e8fe6587a418f103671b86d1ef, type: 3}
-  m_PrefabInstance: {fileID: 413929691}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1780945169
 GameObject:
   m_ObjectHideFlags: 0
