@@ -9,7 +9,7 @@ public class SpikeTrigger : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         // 1. Check if the colliding object is the Character
-        if (other.CompareTag("Character"))
+        if (other.CompareTag("Character") || other.CompareTag("Wizard"))
         {
             CartController cart = other.GetComponent<CartController>();
 

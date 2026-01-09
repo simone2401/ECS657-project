@@ -16,6 +16,32 @@ public class TreeObstacle : MonoBehaviour
 
     public bool IsBurned => isBurned;
 
+    // stop movers that hit the tree
+    void OnTriggerEnter(Collider other)
+    {
+        if (isBurned) return;
+        StopStoppableOnCollider(other);
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (isBurned) return;
+        StopStoppableOnCollider(collision.collider);
+    }
+
+    void StopStoppableOnCollider(Collider col)
+    {
+        // iterate all MonoBehaviour components and check for the interface
+        var comps = col.GetComponents<MonoBehaviour>();
+        foreach (var comp in comps)
+        {
+            if (comp is IStoppable stoppable)
+            {
+                stoppable.StopMovement();
+            }
+        }
+    }
+
     public void BurnDown()
     {
         if (isBurned) return;
