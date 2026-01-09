@@ -13,6 +13,7 @@ public class UIBehaviour : MonoBehaviour
     public GameObject winPanel;
     public GameObject failPanel;
     public CharacterPos characterPos;
+    public GameObject settingsPanel; // Drag the 'SettingsPanel' here in the Inspector
 
     private bool gameActive = false; // true when the game is running
     private bool gameComplete = false; // true when the player finishes the puzzle
@@ -48,6 +49,7 @@ public class UIBehaviour : MonoBehaviour
             UpdateTimerDisplay(remainingTime);
         }
     }
+
     // Begins the gameplay
     void StartGame()
     {
@@ -59,9 +61,11 @@ public class UIBehaviour : MonoBehaviour
         restartButton.gameObject.SetActive(true);
         winPanel.SetActive(false);
         failPanel.SetActive(false);
+        settingsPanel.SetActive(false);
         // load the lvl scene
         //characterPos.StartMoving();
     }
+
     // Converts time to the form minutes:seconds
     void UpdateTimerDisplay(float time)
     {
@@ -127,6 +131,7 @@ public class UIBehaviour : MonoBehaviour
         failPanel.SetActive(false);
         retryButton.gameObject.SetActive(false);
         restartButton.gameObject.SetActive(false);
+        settingsPanel.SetActive(true);
 
         // Show the start button so the player can begin the new attempt
         startButton.gameObject.SetActive(true);
@@ -146,5 +151,4 @@ public class UIBehaviour : MonoBehaviour
         LevelEvents.OnLevelWin -= PuzzleComplete; 
         LevelEvents.OnLevelFail -= FailGame;
     }
-
 }
