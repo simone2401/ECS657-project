@@ -15,8 +15,9 @@ public class SettingsPersistence : MonoBehaviour
     private void Start()
     {
         LoadUserSettings();
-        volumeSlider.onValueChanged.AddListener(delegate { UpdateVolume(); });
-        vsyncToggle.onValueChanged.AddListener(delegate { SaveUserSettings(); });
+        volumeSlider?.onValueChanged.AddListener(delegate { UpdateVolume(); });
+
+        vsyncToggle?.onValueChanged.AddListener(delegate { SaveUserSettings(); });
     }
 
     public void UpdateVolume()
@@ -40,11 +41,16 @@ public class SettingsPersistence : MonoBehaviour
     public void LoadUserSettings()
     {
         float savedVol = PlayerPrefs.GetFloat("MasterVolume", 1.0f);
-        volumeSlider.value = savedVol;
-        if (musicSource != null) musicSource.volume = savedVol;
+        if (volumeSlider != null)
+            volumeSlider.value = savedVol;
+
+        if (musicSource != null)
+            musicSource.volume = savedVol;
 
         int savedVSync = PlayerPrefs.GetInt("VSyncState", 1);
-        vsyncToggle.isOn = (savedVSync == 1);
+        if (vsyncToggle != null)
+            vsyncToggle.isOn = (savedVSync == 1);
+
         QualitySettings.vSyncCount = savedVSync;
     }
 }

@@ -8,12 +8,10 @@ public class UIBehaviour : MonoBehaviour
     public Button startButton;
     public Button restartButton;
     public Button retryButton;
-    public Button returnToMenuButton;
     public TextMeshProUGUI timerText;
     public GameObject winPanel;
     public GameObject failPanel;
 
-    //public CharacterPos characterPos;
     public GameObject settingsPanel; // Drag the 'SettingsPanel' here in the Inspector
 
     private bool gameActive = false; // true when the game is running
@@ -31,7 +29,6 @@ public class UIBehaviour : MonoBehaviour
         startButton.onClick.AddListener(StartGame);
         restartButton.onClick.AddListener(RestartGame);
         retryButton.onClick.AddListener(RestartGame);
-        returnToMenuButton.onClick.AddListener(ReturnToMenu);
 
         UpdateTimerDisplay(levelTimeLimit); // want to show the full time before the game starts
     }
@@ -83,7 +80,6 @@ public class UIBehaviour : MonoBehaviour
         winPanel.SetActive(true);
         restartButton.gameObject.SetActive(false);
         Debug.Log("Puzzle completed in: " + timerText.text); // also display in the game later
-        returnToMenuButton.gameObject.SetActive(true);
     }
 
     // Player lost - time ran out or a character got hit by a spike
