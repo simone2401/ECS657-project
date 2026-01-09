@@ -2266,13 +2266,7 @@ MonoBehaviour:
   speed: 5
   startSlice: 0
   pathData:
-    slices:
-    - splineIndex: 0
-      range:
-        m_Start: 0
-        m_Count: 0
-        m_Direction: 0
-      isEnabled: 0
+    slices: []
 --- !u!1 &1230131615
 GameObject:
   m_ObjectHideFlags: 0
