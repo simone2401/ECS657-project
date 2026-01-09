@@ -1157,7 +1157,7 @@ PrefabInstance:
     - target: {fileID: 4716690165911216519, guid: 75080f88b6ec2424583f10426a851ee8, type: 3}
       propertyPath: returnToMenuButton
       value: 
-      objectReference: {fileID: 1763907869}
+      objectReference: {fileID: 0}
     - target: {fileID: 8433469442913724614, guid: 75080f88b6ec2424583f10426a851ee8, type: 3}
       propertyPath: m_Name
       value: UIManager
@@ -3989,17 +3989,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1.3265216, z: 1.0000001}
   m_Center: {x: 0, y: 0.6632608, z: 0}
---- !u!114 &1763907869 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2465101470130400670, guid: 4c58f6e8fe6587a418f103671b86d1ef, type: 3}
-  m_PrefabInstance: {fileID: 413929691}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1780945169
 GameObject:
   m_ObjectHideFlags: 0
@@ -4740,6 +4729,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8119584815308273013, guid: 24553d32d84564ff6b9b4de0db03ab65, type: 3}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8364354858343579660, guid: 24553d32d84564ff6b9b4de0db03ab65, type: 3}
       propertyPath: m_LocalPosition.x
       value: 11.22
