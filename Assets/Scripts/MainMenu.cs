@@ -19,7 +19,7 @@ public class MainMenu : MonoBehaviour
     }
     // Loads the lvl and hides the main menu after the Play button is clicked
     void OnPlayClicked(){
-        SceneManager.LoadScene("PuzzleLevel");
+        SceneManager.LoadScene("animation");
         gameObject.SetActive(false); // this hides the main menu
     }
 
