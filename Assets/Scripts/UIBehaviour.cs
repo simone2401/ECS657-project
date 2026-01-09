@@ -12,8 +12,11 @@ public class UIBehaviour : MonoBehaviour
     public TextMeshProUGUI timerText;
     public GameObject winPanel;
     public GameObject failPanel;
+<<<<<<< HEAD
     public CharacterPos characterPos;
     public GameObject settingsPanel; // Drag the 'SettingsPanel' here in the Inspector
+=======
+>>>>>>> f84e5f5672d08e5206b09de7bcbaf32b53112f46
 
     private bool gameActive = false; // true when the game is running
     private bool gameComplete = false; // true when the player finishes the puzzle
@@ -42,9 +45,10 @@ public class UIBehaviour : MonoBehaviour
         if (gameActive && !gameComplete)
         {
             remainingTime -= Time.deltaTime;
-            if (remainingTime <= 0f) { // TODO: the player also fails when a character crashes - not for this prototype
+            if (remainingTime <= 0f)
+            { // TODO: the player also fails when a character crashes - not for this prototype
                 remainingTime = 0f;
-                FailGame(); 
+                FailGame();
             }
             UpdateTimerDisplay(remainingTime);
         }
@@ -63,7 +67,6 @@ public class UIBehaviour : MonoBehaviour
         failPanel.SetActive(false);
         settingsPanel.SetActive(false);
         // load the lvl scene
-        //characterPos.StartMoving();
     }
 
     // Converts time to the form minutes:seconds
@@ -86,7 +89,8 @@ public class UIBehaviour : MonoBehaviour
     }
 
     // Player lost - time ran out or a character got hit by a spike
-    void FailGame() {
+    void FailGame()
+    {
         gameComplete = false;
         gameActive = false;
         failPanel.SetActive(true);
@@ -140,15 +144,18 @@ public class UIBehaviour : MonoBehaviour
     }
 
     // sends you back to the menu
-    public void ReturnToMenu(){
+    public void ReturnToMenu()
+    {
         SceneManager.LoadScene("MainMenu");
     }
-    private void OnEnable(){ 
-        LevelEvents.OnLevelWin += PuzzleComplete; 
-        LevelEvents.OnLevelFail += FailGame; 
-    } 
-    void OnDisable(){ 
-        LevelEvents.OnLevelWin -= PuzzleComplete; 
+    private void OnEnable()
+    {
+        LevelEvents.OnLevelWin += PuzzleComplete;
+        LevelEvents.OnLevelFail += FailGame;
+    }
+    void OnDisable()
+    {
+        LevelEvents.OnLevelWin -= PuzzleComplete;
         LevelEvents.OnLevelFail -= FailGame;
     }
 }
