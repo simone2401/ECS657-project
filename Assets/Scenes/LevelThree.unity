@@ -205,12 +205,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 15625179}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.4548751, y: 0.060029812, z: -0.030752692, w: 0.88799745}
-  m_LocalPosition: {x: -11.889475, y: 19.852264, z: -27.347599}
+  m_LocalRotation: {x: 0.43745843, y: 0.060618542, z: -0.029575301, w: 0.89670557}
+  m_LocalPosition: {x: -11.89, y: 19.2, z: -27.38}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
+
   m_LocalEulerAnglesHint: {x: 65.889, y: -1.008, z: -2.573}
 --- !u!1 &199548863
 GameObject:
@@ -409,6 +410,8 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 212094239}
   m_CullTransparentMesh: 1
+  m_LocalEulerAnglesHint: {x: 52.011, y: 7.735, z: 0}
+
 --- !u!1001 &341405105
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1572,6 +1575,34 @@ PrefabInstance:
     - target: {fileID: 3775496120665600521, guid: 488543367cef4494287021a4d5e53932, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5216999457113260447, guid: 488543367cef4494287021a4d5e53932, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.017768621
+      objectReference: {fileID: 0}
+    - target: {fileID: 5216999457113260447, guid: 488543367cef4494287021a4d5e53932, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.0021812916
+      objectReference: {fileID: 0}
+    - target: {fileID: 5216999457113260447, guid: 488543367cef4494287021a4d5e53932, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.8177914
+      objectReference: {fileID: 0}
+    - target: {fileID: 5216999457113260447, guid: 488543367cef4494287021a4d5e53932, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5216999457113260447, guid: 488543367cef4494287021a4d5e53932, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.57551485
+      objectReference: {fileID: 0}
+    - target: {fileID: 5216999457113260447, guid: 488543367cef4494287021a4d5e53932, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5216999457113260447, guid: 488543367cef4494287021a4d5e53932, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 70.271
       objectReference: {fileID: 0}
     - target: {fileID: 6072048129560071236, guid: 488543367cef4494287021a4d5e53932, type: 3}
       propertyPath: cartController
@@ -2892,6 +2923,7 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Wizard
       objectReference: {fileID: 0}
+
     - target: {fileID: 4792352871020322713, guid: 166aeb4f0393e4693a225b58afc1a880, type: 3}
       propertyPath: m_IsTrigger
       value: 1
