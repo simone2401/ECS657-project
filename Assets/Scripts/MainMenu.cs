@@ -41,4 +41,12 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
         Debug.Log("The game was exited");
     }
+
+    public void LoadScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
+    }
+
+
 }
+

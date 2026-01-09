@@ -5,26 +5,26 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/Main.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 0
-    path: Assets/Scenes/Sabrina.unity
-    guid: d2638f2a4937b44798499bd5f2419a19
-  - enabled: 0
-    path: Assets/Scenes/TimerUI.unity
-    guid: 05d15d61785a24a33bb28bae0bd5e00f
-  - enabled: 0
-    path: Assets/Scenes/Playground.unity
-    guid: 07125365bb106404486587b32ad89510
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: db23736c55a8d8d4b840c1ead9384ea8
-  - enabled: 0
+  - enabled: 1
+    path: Assets/Scenes/animation.unity
+    guid: 70bbd50d6b4ad49aba302fcde0bad4cf
+  - enabled: 1
+    path: Assets/Scenes/Playground.unity
+    guid: 07125365bb106404486587b32ad89510
+  - enabled: 1
+    path: Assets/Scenes/LevelOne.unity
+    guid: af645efbb245a4221bf05daff1f75379
+  - enabled: 1
+    path: Assets/Scenes/LevelZero.unity
+    guid: 2203ea46dde114ea29f1c75464ed6bda
+  - enabled: 1
+    path: Assets/Scenes/LevelTwo.unity
+    guid: a1e7e6d709c174eafa830a53fdb6f6bb
+  - enabled: 1
     path: Assets/Scenes/UI-fail.unity
     guid: 0786b703e678ab74a9f76aa9f14f8a33
-  - enabled: 0
-    path: Assets/Scenes/PuzzleLevel.unity
-    guid: 252746270b0b64db78ba9c23cf228d5b
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
