@@ -7,7 +7,7 @@ Complete the puzzle within the time limit without getting hit by any obstacles i
 Make sure to time these changes you make to the track - you may lead your character to their doom... <br/>
 Good Luck!
 <br/>
-Play our game here: https://simone2401.github.io/ECS657-project/build/index.html
+Play our game here:https://simone2401.github.io/ECS657-project/build2/index.html
 <br/>
 External Assets used:<br/>
 https://assetstore.unity.com/packages/3d/characters/easy-primitive-people-161846 - for the pig/witch/knight/angle prefabs <br/>
