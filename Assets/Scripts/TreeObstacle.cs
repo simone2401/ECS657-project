@@ -8,10 +8,6 @@ public class TreeObstacle : MonoBehaviour
     private Renderer[] renderers;
     private bool isBurned = false;
 
-    [Header("Burn Settings")]
-    public float burnDuration = 1.5f; // how long before the tree visually disappears
-    public GameObject burnVFXPrefab;  // optional VFX prefab
-
     void Awake()
     {
         treeCollider = GetComponent<Collider>();
@@ -51,28 +47,19 @@ public class TreeObstacle : MonoBehaviour
         if (isBurned) return;
         isBurned = true;
 
-        Debug.Log("Tree burn initiated: playing VFX and scheduling removal.");
+        Debug.Log("Tree burn initiated.");
 
-        // Spawn VFX if provided
-        if (burnVFXPrefab != null)
-        {
-            Instantiate(burnVFXPrefab, transform.position, Quaternion.identity, transform);
-        }
-
-        // Start coroutine that waits burnDuration, then disable visuals/collision and resume movers
+        // Start coroutine that disables visuals/collision and resumes movers
         StartCoroutine(BurnCoroutine());
     }
 
     private IEnumerator BurnCoroutine()
     {
-        // wait for burn animation/VFX to play
-        yield return new WaitForSeconds(burnDuration);
-
         // Hide visuals first so tree is no longer visible
         foreach (var r in renderers)
             r.enabled = false;
 
-        // Disable collider after visuals are hidden so actors aren't allowed through while the tree still looks present
+        // Disable collider after visuals are hidden
         if (treeCollider != null)
             treeCollider.enabled = false;
 
@@ -82,7 +69,6 @@ public class TreeObstacle : MonoBehaviour
         var resumed = new HashSet<IStoppable>();
         foreach (var c in colliders)
         {
-            // check all MonoBehaviours on the collider's root object and pick those implementing the interface
             var comps = c.GetComponents<MonoBehaviour>();
             foreach (var comp in comps)
             {
@@ -93,8 +79,28 @@ public class TreeObstacle : MonoBehaviour
                 }
             }
         }
+        yield break;
+    }
 
-        // Finally, destroy this gameobject after a short delay to keep scene clean
-        Destroy(gameObject, 0.5f);
+    public void Reset()
+    {
+        // Stop any active burn coroutine
+        StopAllCoroutines();
+
+        // Re-enable the GameObject
+        gameObject.SetActive(true);
+
+        // Re-enable visuals
+        foreach (var r in renderers)
+            r.enabled = true;
+
+        // Re-enable collider
+        if (treeCollider != null)
+            treeCollider.enabled = true;
+
+        // Reset burned flag
+        isBurned = false;
+
+        Debug.Log("Tree reset to initial state.");
     }
 }
