@@ -128,6 +128,14 @@ public class UIBehaviour : MonoBehaviour
             trap.ResetTrap();
         }
 
+        // Reset all trees
+        TreeObstacle[] trees = Object.FindObjectsByType<TreeObstacle>(FindObjectsSortMode.None);
+        foreach (TreeObstacle tree in trees)
+        {
+            Debug.Log($"Resetting tree: {tree.gameObject.name}");
+            tree.Reset();
+        }
+
         // 4. Update UI visibility
         winPanel.SetActive(false);
         failPanel.SetActive(false);
