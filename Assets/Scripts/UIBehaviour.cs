@@ -12,11 +12,9 @@ public class UIBehaviour : MonoBehaviour
     public TextMeshProUGUI timerText;
     public GameObject winPanel;
     public GameObject failPanel;
-<<<<<<< HEAD
-    public CharacterPos characterPos;
+
+    //public CharacterPos characterPos;
     public GameObject settingsPanel; // Drag the 'SettingsPanel' here in the Inspector
-=======
->>>>>>> f84e5f5672d08e5206b09de7bcbaf32b53112f46
 
     private bool gameActive = false; // true when the game is running
     private bool gameComplete = false; // true when the player finishes the puzzle
