@@ -20,6 +20,32 @@ public class TreeObstacle : MonoBehaviour
 
     public bool IsBurned => isBurned;
 
+    // stop movers that hit the tree
+    void OnTriggerEnter(Collider other)
+    {
+        if (isBurned) return;
+        StopStoppableOnCollider(other);
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (isBurned) return;
+        StopStoppableOnCollider(collision.collider);
+    }
+
+    void StopStoppableOnCollider(Collider col)
+    {
+        // iterate all MonoBehaviour components and check for the interface
+        var comps = col.GetComponents<MonoBehaviour>();
+        foreach (var comp in comps)
+        {
+            if (comp is IStoppable stoppable)
+            {
+                stoppable.StopMovement();
+            }
+        }
+    }
+
     public void BurnDown()
     {
         if (isBurned) return;
@@ -33,33 +59,34 @@ public class TreeObstacle : MonoBehaviour
             Instantiate(burnVFXPrefab, transform.position, Quaternion.identity, transform);
         }
 
-        // Start coroutine that waits burnDuration, then disable collision/visuals and resume movers
+        // Start coroutine that waits burnDuration, then disable visuals/collision and resume movers
         StartCoroutine(BurnCoroutine());
     }
 
     private IEnumerator BurnCoroutine()
     {
-        // Optionally play burn animation / VFX here
+        // wait for burn animation/VFX to play
         yield return new WaitForSeconds(burnDuration);
 
-        // Disable collider so things can pass
-        if (treeCollider != null)
-            treeCollider.enabled = false;
-
-        // Hide visuals (disable renderers)
+        // Hide visuals first so tree is no longer visible
         foreach (var r in renderers)
             r.enabled = false;
 
+        // Disable collider after visuals are hidden so actors aren't allowed through while the tree still looks present
+        if (treeCollider != null)
+            treeCollider.enabled = false;
+
         // Resume any nearby stoppable objects that may have been halted by this tree.
-        // We search a small radius around the tree center; adjust radius as needed.
         float resumeRadius = 3f;
         var colliders = Physics.OverlapSphere(transform.position, resumeRadius);
         var resumed = new HashSet<IStoppable>();
         foreach (var c in colliders)
         {
-            if (c.TryGetComponent<IStoppable>(out var s))
+            // check all MonoBehaviours on the collider's root object and pick those implementing the interface
+            var comps = c.GetComponents<MonoBehaviour>();
+            foreach (var comp in comps)
             {
-                if (!resumed.Contains(s))
+                if (comp is IStoppable s && !resumed.Contains(s))
                 {
                     s.StartMovement();
                     resumed.Add(s);
